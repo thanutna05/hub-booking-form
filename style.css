@@ -122,7 +122,7 @@ body {
 }
 
 .logo {
-  height: 80px;
+  height: 120px;
   width: auto;
   object-fit: contain;
 }
@@ -457,7 +457,7 @@ input::placeholder {
   }
 
   .logo {
-    height: 64px;
+    height: 90px;
   }
 }
 

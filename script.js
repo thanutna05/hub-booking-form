@@ -109,17 +109,14 @@ form.addEventListener("submit", async (e) => {
   setLoading(true);
 
   try {
-    const res = await fetch(MAKE_WEBHOOK_URL, {
+    // Use text/plain to avoid CORS preflight — Make.com parses the JSON body correctly
+    await fetch(MAKE_WEBHOOK_URL, {
       method:  "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/plain" },
       body:    JSON.stringify(payload),
     });
 
-    if (res.ok) {
-      showSuccess();
-    } else {
-      showError(`เกิดข้อผิดพลาดจากเซิร์ฟเวอร์ (${res.status}) — กรุณาลองใหม่ค่ะ`);
-    }
+    showSuccess();
   } catch (err) {
     console.error("Webhook error:", err);
     showError("ไม่สามารถเชื่อมต่อได้ กรุณาตรวจสอบอินเทอร์เน็ตแล้วลองใหม่ค่ะ");
