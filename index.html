@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hub Airport Parking — ยืนยันการจอง</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background blobs -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <!-- Page wrapper -->
+  <main class="page">
+
+    <!-- Card -->
+    <div class="card" id="booking-card">
+
+      <!-- Header -->
+      <div class="card-header">
+        <img src="assets/hub-logo.jpg" alt="Hub Airport Parking Thailand" class="logo" />
+        <div class="mascot-wrap">
+          <img src="assets/mascot.png" alt="" class="mascot" aria-hidden="true" />
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="card-title">
+        <h1>ยืนยันข้อมูลการจอง</h1>
+        <p class="subtitle">Complete Your Reservation · กรุณากรอกข้อมูลให้ครบถ้วน</p>
+      </div>
+
+      <!-- Error banner -->
+      <div class="error-banner" id="error-banner" role="alert" aria-live="polite" hidden>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span id="error-text">เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง</span>
+      </div>
+
+      <!-- Form -->
+      <form id="booking-form" novalidate>
+
+        <div class="field">
+          <label for="name">ชื่อ-นามสกุล <span class="req">*</span></label>
+          <input type="text" id="name" name="name" placeholder="Full Name" required autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="phone">เบอร์โทรศัพท์ <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="0X-XXXX-XXXX" required autocomplete="tel" />
+        </div>
+
+        <div class="field">
+          <label for="car_plate">ทะเบียนรถ <span class="req">*</span></label>
+          <input type="text" id="car_plate" name="car_plate" placeholder="กก 1234 กรุงเทพ" required autocomplete="off" />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="checkin">วันที่เข้า (Check-in) <span class="req">*</span></label>
+            <input type="datetime-local" id="checkin" name="checkin" required />
+          </div>
+          <div class="field">
+            <label for="checkout">วันที่ออก (Check-out) <span class="req">*</span></label>
+            <input type="datetime-local" id="checkout" name="checkout" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="total_payment">ยอดชำระ / Total Payment (฿) <span class="req">*</span></label>
+          <div class="input-prefix-wrap">
+            <span class="input-prefix">฿</span>
+            <input type="number" id="total_payment" name="total_payment" placeholder="0.00" min="0" step="0.01" required />
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">
+          <span class="btn-text">ยืนยันการจอง · Confirm Booking</span>
+          <span class="btn-spinner" aria-hidden="true" hidden>
+            <svg class="spinner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            กำลังส่งข้อมูล...
+          </span>
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Success screen (hidden until form submitted) -->
+    <div class="success-card" id="success-card" hidden>
+      <img src="assets/mascot.png" alt="" class="success-mascot" aria-hidden="true" />
+      <div class="success-checkmark">
+        <svg viewBox="0 0 52 52" fill="none">
+          <circle cx="26" cy="26" r="25" stroke="currentColor" stroke-width="2" class="check-circle"/>
+          <path d="M14 27l8 8 16-16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-mark"/>
+        </svg>
+      </div>
+      <h2>ขอบคุณค่ะ! 🎉</h2>
+      <p>เราได้รับข้อมูลการจองของคุณแล้ว<br />ทีมงาน Hub จะติดต่อกลับเร็วๆ นี้</p>
+      <p class="success-sub">We've received your booking information.<br />Our team will be in touch shortly.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <span>Hub Airport Parking Thailand</span>
+      <span class="footer-dot">·</span>
+      <span>ติดต่อเราทาง Line ได้เลยค่ะ</span>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
