@@ -98,6 +98,7 @@ form.addEventListener("submit", async (e) => {
   const payload = {
     name:          form.querySelector("#name").value.trim(),
     phone:         form.querySelector("#phone").value.trim(),
+    email:         form.querySelector("#email").value.trim(),
     car_plate:     form.querySelector("#car_plate").value.trim().toUpperCase(),
     checkin:       form.querySelector("#checkin").value,
     checkout:      form.querySelector("#checkout").value,
