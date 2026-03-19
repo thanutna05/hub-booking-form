@@ -387,6 +387,32 @@ input::placeholder {
   font-size: 0.97rem;
 }
 
+.success-main {
+  font-weight: 500;
+}
+
+.success-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--blue-light);
+  border: 2px solid var(--blue-mid);
+  border-radius: 14px;
+  padding: 16px 20px;
+  color: var(--blue-deep);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
+  width: 100%;
+}
+
+.success-notice svg {
+  flex-shrink: 0;
+  color: var(--blue-deep);
+}
+
 .success-sub {
   font-size: 0.85rem !important;
   color: var(--text-light) !important;
