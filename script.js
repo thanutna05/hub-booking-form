@@ -109,11 +109,11 @@ form.addEventListener("submit", async (e) => {
   setLoading(true);
 
   try {
-    // Use text/plain to avoid CORS preflight — Make.com parses the JSON body correctly
+    // Use form-encoded so Make.com receives each field separately (no CORS preflight)
     await fetch(MAKE_WEBHOOK_URL, {
       method:  "POST",
-      headers: { "Content-Type": "text/plain" },
-      body:    JSON.stringify(payload),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body:    new URLSearchParams(payload).toString(),
     });
 
     showSuccess();
