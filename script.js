@@ -4,7 +4,7 @@
 // =============================================
 
 // ⚠️ PASTE YOUR MAKE.COM WEBHOOK URL HERE:
-const MAKE_WEBHOOK_URL = "REPLACE_WITH_YOUR_MAKE_WEBHOOK_URL";
+const MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/iowy2sgzbpfk1wjoj673srgevkutwucn";
 
 // ── DOM refs ───────────────────────────────
 const form        = document.getElementById("booking-form");
