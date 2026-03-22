@@ -102,6 +102,7 @@ form.addEventListener("submit", async (e) => {
     car_plate:     form.querySelector("#car_plate").value.trim().toUpperCase(),
     checkin:       form.querySelector("#checkin").value,
     checkout:      form.querySelector("#checkout").value,
+    num_people:    parseInt(form.querySelector("#num_people").value),
     total_payment: parseFloat(form.querySelector("#total_payment").value),
     submitted_at:  new Date().toISOString(),
   };
