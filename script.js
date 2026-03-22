@@ -70,11 +70,12 @@ function validateForm() {
   });
 
   // Extra: check checkout is after checkin
-  const checkin  = form.querySelector("#checkin");
-  const checkout = form.querySelector("#checkout");
-  if (checkin.value && checkout.value) {
-    if (new Date(checkout.value) <= new Date(checkin.value)) {
-      markInvalid(checkout);
+  const checkinVal  = form.querySelector("#checkin_date").value + "T" + form.querySelector("#checkin_time").value;
+  const checkoutVal = form.querySelector("#checkout_date").value + "T" + form.querySelector("#checkout_time").value;
+  if (checkinVal.length > 1 && checkoutVal.length > 1) {
+    if (new Date(checkoutVal) <= new Date(checkinVal)) {
+      markInvalid(form.querySelector("#checkout_date"));
+      markInvalid(form.querySelector("#checkout_time"));
       showError("วันที่ออกต้องหลังจากวันที่เข้าค่ะ (Check-out must be after check-in)");
       return false;
     }
@@ -100,8 +101,8 @@ form.addEventListener("submit", async (e) => {
     phone:         form.querySelector("#phone").value.trim(),
     email:         form.querySelector("#email").value.trim(),
     car_plate:     form.querySelector("#car_plate").value.trim().toUpperCase(),
-    checkin:       form.querySelector("#checkin").value,
-    checkout:      form.querySelector("#checkout").value,
+    checkin:       form.querySelector("#checkin_date").value + "T" + form.querySelector("#checkin_time").value,
+    checkout:      form.querySelector("#checkout_date").value + "T" + form.querySelector("#checkout_time").value,
     num_people:    parseInt(form.querySelector("#num_people").value),
     total_payment: parseFloat(form.querySelector("#total_payment").value),
     submitted_at:  new Date().toISOString(),

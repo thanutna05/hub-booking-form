@@ -64,14 +64,19 @@
           <input type="text" id="car_plate" name="car_plate" placeholder="กก 1234 กรุงเทพ" required autocomplete="off" />
         </div>
 
-        <div class="field-row">
-          <div class="field">
-            <label for="checkin">วันที่เข้า (Check-in) <span class="req">*</span></label>
-            <input type="datetime-local" id="checkin" name="checkin" required />
+        <div class="field">
+          <label>วันที่เข้า (Check-in) <span class="req">*</span></label>
+          <div class="field-row">
+            <input type="date" id="checkin_date" name="checkin_date" required />
+            <input type="time" id="checkin_time" name="checkin_time" required />
           </div>
-          <div class="field">
-            <label for="checkout">วันที่ออก (Check-out) <span class="req">*</span></label>
-            <input type="datetime-local" id="checkout" name="checkout" required />
+        </div>
+
+        <div class="field">
+          <label>วันที่ออก (Check-out) <span class="req">*</span></label>
+          <div class="field-row">
+            <input type="date" id="checkout_date" name="checkout_date" required />
+            <input type="time" id="checkout_time" name="checkout_time" required />
           </div>
         </div>
 
