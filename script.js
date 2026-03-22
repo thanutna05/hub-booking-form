@@ -9,22 +9,24 @@ const MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/iowy2sgzbpfk1wjoj673srgevkut
 // ── Populate hour/minute dropdowns ────────
 function pad(n) { return String(n).padStart(2, "0"); }
 
-["checkin_hour","checkout_hour"].forEach(id => {
-  const sel = document.getElementById(id);
-  for (let h = 0; h < 24; h++) {
-    const opt = document.createElement("option");
-    opt.value = opt.textContent = pad(h);
-    sel.appendChild(opt);
-  }
-});
+document.addEventListener("DOMContentLoaded", function () {
+  ["checkin_hour","checkout_hour"].forEach(id => {
+    const sel = document.getElementById(id);
+    for (let h = 0; h < 24; h++) {
+      const opt = document.createElement("option");
+      opt.value = opt.textContent = pad(h);
+      sel.appendChild(opt);
+    }
+  });
 
-["checkin_min","checkout_min"].forEach(id => {
-  const sel = document.getElementById(id);
-  for (let m = 0; m < 60; m += 5) {
-    const opt = document.createElement("option");
-    opt.value = opt.textContent = pad(m);
-    sel.appendChild(opt);
-  }
+  ["checkin_min","checkout_min"].forEach(id => {
+    const sel = document.getElementById(id);
+    for (let m = 0; m < 60; m += 5) {
+      const opt = document.createElement("option");
+      opt.value = opt.textContent = pad(m);
+      sel.appendChild(opt);
+    }
+  });
 });
 
 // ── DOM refs ───────────────────────────────
@@ -96,7 +98,8 @@ function validateForm() {
   if (checkinVal.length > 1 && checkoutVal.length > 1) {
     if (new Date(checkoutVal) <= new Date(checkinVal)) {
       markInvalid(form.querySelector("#checkout_date"));
-      markInvalid(form.querySelector("#checkout_time"));
+      markInvalid(form.querySelector("#checkout_hour"));
+      markInvalid(form.querySelector("#checkout_min"));
       showError("วันที่ออกต้องหลังจากวันที่เข้าค่ะ (Check-out must be after check-in)");
       return false;
     }
