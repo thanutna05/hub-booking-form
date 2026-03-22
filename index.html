@@ -68,7 +68,15 @@
           <label>วันที่เข้า (Check-in) <span class="req">*</span></label>
           <div class="field-row">
             <input type="date" id="checkin_date" name="checkin_date" required />
-            <input type="time" id="checkin_time" name="checkin_time" required />
+            <div class="time-selects">
+              <select id="checkin_hour" name="checkin_hour" required>
+                <option value="" disabled selected>HH</option>
+              </select>
+              <span class="time-colon">:</span>
+              <select id="checkin_min" name="checkin_min" required>
+                <option value="" disabled selected>MM</option>
+              </select>
+            </div>
           </div>
         </div>
 
@@ -76,7 +84,15 @@
           <label>วันที่ออก (Check-out) <span class="req">*</span></label>
           <div class="field-row">
             <input type="date" id="checkout_date" name="checkout_date" required />
-            <input type="time" id="checkout_time" name="checkout_time" required />
+            <div class="time-selects">
+              <select id="checkout_hour" name="checkout_hour" required>
+                <option value="" disabled selected>HH</option>
+              </select>
+              <span class="time-colon">:</span>
+              <select id="checkout_min" name="checkout_min" required>
+                <option value="" disabled selected>MM</option>
+              </select>
+            </div>
           </div>
         </div>
 

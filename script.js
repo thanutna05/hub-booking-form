@@ -6,6 +6,27 @@
 // ⚠️ PASTE YOUR MAKE.COM WEBHOOK URL HERE:
 const MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/iowy2sgzbpfk1wjoj673srgevkutwucn";
 
+// ── Populate hour/minute dropdowns ────────
+function pad(n) { return String(n).padStart(2, "0"); }
+
+["checkin_hour","checkout_hour"].forEach(id => {
+  const sel = document.getElementById(id);
+  for (let h = 0; h < 24; h++) {
+    const opt = document.createElement("option");
+    opt.value = opt.textContent = pad(h);
+    sel.appendChild(opt);
+  }
+});
+
+["checkin_min","checkout_min"].forEach(id => {
+  const sel = document.getElementById(id);
+  for (let m = 0; m < 60; m += 5) {
+    const opt = document.createElement("option");
+    opt.value = opt.textContent = pad(m);
+    sel.appendChild(opt);
+  }
+});
+
 // ── DOM refs ───────────────────────────────
 const form        = document.getElementById("booking-form");
 const submitBtn   = document.getElementById("submit-btn");
@@ -70,8 +91,8 @@ function validateForm() {
   });
 
   // Extra: check checkout is after checkin
-  const checkinVal  = form.querySelector("#checkin_date").value + "T" + form.querySelector("#checkin_time").value;
-  const checkoutVal = form.querySelector("#checkout_date").value + "T" + form.querySelector("#checkout_time").value;
+  const checkinVal  = form.querySelector("#checkin_date").value + "T" + form.querySelector("#checkin_hour").value + ":" + form.querySelector("#checkin_min").value;
+  const checkoutVal = form.querySelector("#checkout_date").value + "T" + form.querySelector("#checkout_hour").value + ":" + form.querySelector("#checkout_min").value;
   if (checkinVal.length > 1 && checkoutVal.length > 1) {
     if (new Date(checkoutVal) <= new Date(checkinVal)) {
       markInvalid(form.querySelector("#checkout_date"));
@@ -101,8 +122,8 @@ form.addEventListener("submit", async (e) => {
     phone:         form.querySelector("#phone").value.trim(),
     email:         form.querySelector("#email").value.trim(),
     car_plate:     form.querySelector("#car_plate").value.trim().toUpperCase(),
-    checkin:       form.querySelector("#checkin_date").value + "T" + form.querySelector("#checkin_time").value,
-    checkout:      form.querySelector("#checkout_date").value + "T" + form.querySelector("#checkout_time").value,
+    checkin:       form.querySelector("#checkin_date").value + "T" + form.querySelector("#checkin_hour").value + ":" + form.querySelector("#checkin_min").value,
+    checkout:      form.querySelector("#checkout_date").value + "T" + form.querySelector("#checkout_hour").value + ":" + form.querySelector("#checkout_min").value,
     num_people:    parseInt(form.querySelector("#num_people").value),
     total_payment: parseFloat(form.querySelector("#total_payment").value),
     submitted_at:  new Date().toISOString(),

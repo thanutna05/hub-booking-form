@@ -209,6 +209,22 @@ form {
   gap: 14px;
 }
 
+.time-selects {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.time-selects select {
+  flex: 1;
+}
+
+.time-colon {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-mid);
+}
+
 label {
   font-size: 0.83rem;
   font-weight: 600;
@@ -224,7 +240,8 @@ label {
 input[type="text"],
 input[type="tel"],
 input[type="number"],
-input[type="datetime-local"] {
+input[type="date"],
+select {
   width: 100%;
   padding: 13px 16px;
   border: 2px solid var(--blue-light);
